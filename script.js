@@ -1,6 +1,4 @@
-// ---------- DATA ----------
-// Each laptop is an object. All laptops are stored in an array.
-// Put your pictures in the "images" folder and use the same file names below.
+
 var products = [
   { id: 1, name: "HP 250 G8", brand: "HP", specs: "Core i5, 8GB RAM, 256GB SSD", price: 48000, image: "images/laptop1.jpg" },
   { id: 2, name: "Dell Inspiron 15", brand: "Dell", specs: "Core i5, 8GB RAM, 512GB SSD", price: 62000, image: "images/laptop2.jpg" },
@@ -10,11 +8,9 @@ var products = [
   { id: 6, name: "ASUS VivoBook 15", brand: "ASUS", specs: "Core i7, 16GB RAM, 512GB SSD", price: 85000, image: "images/laptop6.jpg" }
 ];
 
-// The cart is loaded from localStorage so it survives a page refresh.
-// Each cart item looks like: { id: 1, qty: 2 }
+
 var cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// ---------- SAVE THE CART ----------
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
@@ -28,7 +24,7 @@ function updateCartCount() {
   document.getElementById("cartCount").innerHTML = count;
 }
 
-// ---------- FIND A PRODUCT BY ID ----------
+
 function findProduct(id) {
   for (var i = 0; i < products.length; i++) {
     if (products[i].id == id) {
@@ -37,7 +33,6 @@ function findProduct(id) {
   }
 }
 
-// ---------- SHOW ONE PAGE AT A TIME ----------
 function showPage(page) {
   var shopPage = document.getElementById("shopPage");
   var cartPage = document.getElementById("cartPage");
@@ -59,7 +54,7 @@ function showPage(page) {
   }
 }
 
-// ---------- DISPLAY PRODUCTS ----------
+
 function displayProducts(list) {
   var productList = document.getElementById("productList");
   var resultCount = document.getElementById("resultCount");
@@ -90,7 +85,7 @@ function displayProducts(list) {
   }
 }
 
-// ---------- SEARCH / FILTER ----------
+
 function filterProducts() {
   var name = document.getElementById("searchName").value.toLowerCase();
   var brand = document.getElementById("searchBrand").value;
@@ -129,7 +124,7 @@ function clearFilters() {
   displayProducts(products);
 }
 
-// ---------- CART FUNCTIONS ----------
+
 function addToCart(id) {
   var found = false;
 
@@ -213,7 +208,7 @@ function displayCart() {
   cartTotal.innerHTML = "Total: KES " + total;
 }
 
-// ---------- CHECKOUT ----------
+
 function placeOrder(event) {
   event.preventDefault();
 
@@ -240,6 +235,6 @@ function placeOrder(event) {
   message.classList.remove("hidden");
 }
 
-// ---------- RUN WHEN PAGE OPENS ----------
+
 displayProducts(products);
 updateCartCount();
